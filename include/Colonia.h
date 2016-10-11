@@ -6,6 +6,11 @@ private:
 	int col;
 	bool **Life;
 public:
+	Colonia(){
+		Life = NULL;
+		row = 0;
+		col = 0;
+	}
 	Colonia(int x, int y){
 		row = y+2;
 		col = x+2;
