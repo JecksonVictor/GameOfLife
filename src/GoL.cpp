@@ -10,34 +10,24 @@ int main(int argc, char const *argv[])
 	ifstream myfile;
 	myfile.open (argv[1]);
 	if (myfile.is_open()){
-		unsigned int linhas = myfile.get(linhas);
-		myfile.get(c);
-		unsigned int colunas = myfile.get(colunas);
-		myfile.get(c);
-		char symb = myfile.get(symb);
-		myfile.get(c);
-	}
-	/*
+		int linhas, colunas;
+		myfile >> linhas;
+		myfile >> colunas;
 
-	if (myfile.is_open()){
-		unsigned int linhas = myfile.get(linhas);
-		myfile.get(c);
-		unsigned int colunas = myfile.get(colunas);
-		myfile.get(c);
-		char symb = myfile.get(symb);
-		myfile.get(c);
+		char symb;
+		myfile >> symb;
 
+		char got;
 		Colonia life(linhas, colunas);
-		
-		for (auto i(0u); i<linhas; ++i){
-			for (auto j(0u); j<colunas+1; ++j){
-				myfile.get(c);
-				if (c == symb){
-					life.setAlive(i,j);
+		for (int i = 0; i < linhas; ++i){
+			for (int j = 0; j < colunas; ++j)			{
+				myfile >> got;
+				if (got == symb){
+					//life.setAlive(i,j);
 				}
 			}
 		}
 		myfile.close();
-	}*/
+	}
 	return 0;
 }
