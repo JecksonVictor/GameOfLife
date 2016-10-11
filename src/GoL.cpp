@@ -30,14 +30,20 @@ int main(int argc, char const *argv[])
 		myfile.close();
 
 		string namefile;
+		string outname = "output/";
 		cout << "Defina o nome do arquivo de saída: ";
 		getline(cin, namefile);
+		outname += namefile += ".txt";
+
+		ofstream myfile;
+		myfile.open (outname, ofstream::app);
+
 		bool running = true;
 		int geracao = 1;
 		while (running){
 			cout << geracao << "ª Geração" << endl;
-			//cout << life;
-			//life.update();
+			cout << life;
+			life.update();
 			//if (life.extinct() == true){
 				//running = false;
 				//cout << "Colonia instinta" << endl;
@@ -46,9 +52,11 @@ int main(int argc, char const *argv[])
 				//running = false;
 				//cout << "Colonia estável" << endl;
 			//}
-			//outputIt()
+			//output
+			myfile << geracao << "ª geracao" << endl;
+			myfile << life;
 			geracao++;
-			cout << "Digite algo para continuar, alt+z para sair...";
+			cout << "Tecle Enter para continuar, alt+z para sair...";
 			string k;
 			getline(cin, k);
 		}

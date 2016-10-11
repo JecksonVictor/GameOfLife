@@ -32,9 +32,9 @@ public:
 	void setDead(int x, int y){
 		Life[x+1][y+1] = false;
 	}
-/*
+
 	void update(void){
-		Colonia copyLife = this;
+		/*Colonia copyLife (this->row, this->col);
 		for (int i = 1; i < this->row-1; ++i){
 			for (int j = 1; i < this->col-1; ++j){
 				unsigned int neighbors;
@@ -71,8 +71,8 @@ public:
 					}
 				}
 			}
-		}
-	}*/
+		}*/
+	}
 
 	bool extinct(void){
 		for (int i = 1; i < this->row-1; ++i){
@@ -89,7 +89,7 @@ public:
 		operator<<(std::ostream & os, const Colonia & table){
 			for (auto i(1); i<table.row-1; ++i){
 				for (auto j(1); j<table.col-1; ++j){
-					if (table.Life[i][j] == true){
+					if (/*table.Life[i][j] == true*/ 1){
 						os << "X";
 					} else {
 						os << "O";
