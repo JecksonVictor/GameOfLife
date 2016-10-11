@@ -28,6 +28,30 @@ int main(int argc, char const *argv[])
 			}
 		}
 		myfile.close();
+
+		string namefile;
+		cout << "Defina o nome do arquivo de saída: ";
+		getline(cin, namefile);
+		bool running = true;
+		int geracao = 1;
+		while (running){
+			cout << geracao << "ª Geração" << endl;
+			//cout << life;
+			//life.update();
+			//if (life.extinct() == true){
+				//running = false;
+				//cout << "Colonia instinta" << endl;
+			//}
+			//if (life.stable() == true){
+				//running = false;
+				//cout << "Colonia estável" << endl;
+			//}
+			//outputIt()
+			geracao++;
+			cout << "Digite algo para continuar, alt+z para sair...";
+			string k;
+			getline(cin, k);
+		}
 	}
 	return 0;
 }

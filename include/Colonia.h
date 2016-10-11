@@ -32,11 +32,11 @@ public:
 	void setDead(int x, int y){
 		Life[x+1][y+1] = false;
 	}
-
+/*
 	void update(void){
-		Colonia copyLife(Life.row, Life.col);
-		for (int i = 1; i < Life.row-1; ++i){
-			for (int j = 1; i < Life.col; ++j){
+		Colonia copyLife = this;
+		for (int i = 1; i < this->row-1; ++i){
+			for (int j = 1; i < this->col-1; ++j){
 				unsigned int neighbors;
 				if (copyLife[i-1][j-1] == true)
 					++neighbors;
@@ -57,7 +57,7 @@ public:
 				if (copyLife[i+1][j+1] == true)
 					++neighbors;
 
-				if (copyLife[i][j] == true){
+				if (this[i][j] == true){
 					if (neighbors > 3){
 						setDead(i, j);
 					}
@@ -65,13 +65,24 @@ public:
 						setDead(i, j);
 					}
 				}
-				if (copyLife[i][j] == false){
+				if (this[i][j] == false){
 					if (neighbors == 3){
 						setAlive(i, j);
 					}
 				}
 			}
 		}
+	}*/
+
+	bool extinct(void){
+		for (int i = 1; i < this->row-1; ++i){
+			for (int j = 1; i < this->col-1; ++j){
+				if (Life[i][j] == true){
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	friend std::ostream &
@@ -88,4 +99,12 @@ public:
 			}
 			os << std::endl;
 		}
+
+	Colonia & operator = (const Colonia & other){
+		this->row = other.row;
+		this->col = other.col;
+		for (int i=0; i<other.row; ++i){
+			std::copy(&other.Life[i], &other.Life[other.row], &this->Life[i]);
+		}
+	}
 };
