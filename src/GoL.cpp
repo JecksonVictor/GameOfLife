@@ -24,10 +24,10 @@ int main(int argc, char const *argv[]) {
 
 		/*! Lê todas as células vivas da base e as coloca como vivas na Colonia */
 		for (int i = 0; i < linhas; ++i){
-			for (int j = 0; j < colunas; ++j)			{
+			for (int j = 0; j < colunas; ++j){
 				myfile >> got;
 				if (got == symb){
-					//life.setAlive(i,j);
+					life.setAlive(i,j);
 				}
 			}
 		}
@@ -54,14 +54,16 @@ int main(int argc, char const *argv[]) {
 			cout << geracao << "ª Geração" << endl;
 			cout << life;
 
+			Colonia copy(linhas, colunas);
+			copy = life;
 			/*! Realiza update */
-			life.update();
+			life.update(copy);
 
 			/*! Se Colonia == (Extinta|Estável) -> Parar o while e informar ocorrência */
-			/*if (life.extinct() == true){
-				running = false;
-				out << "Colonia instinta" << endl;
-			}
+			if (life.extinct() == true){
+				cout << "Colonia Extinta" << endl;
+				return 0;
+			}/*
 			if (life.stable() == true){
 				running = false;
 				cout << "Colonia estável" << endl;
